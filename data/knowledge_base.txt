@@ -1,0 +1,15 @@
+MITRE ATT&CK T1059.007 - Command and Scripting Interpreter: JavaScript
+Adversaries may abuse JavaScript to execute specific commands and payloads. JavaScript can be used to obfuscate malicious code, deliver payloads, or exploit browser vulnerabilities.
+Alert Note: "Possible XSS attack, js event handler" and "Possible XSS attack, script tag" are often triggered by legitimate JavaScript files if they contain patterns resembling cross-site scripting vectors. In WordPress, `wp-emoji-release.min.js` is a known source of such false positives due to its complex string manipulation.
+
+MITRE ATT&CK T1552.001 - Unsecured Credentials: Credentials in Files or on Disk
+Adversaries may search for private keys, passwords, and other credentials in files or on disk.
+Alert Note: "ET INFO Cleartext WordPress Login" indicates that credentials were sent over HTTP (port 80) instead of HTTPS (port 443). This is a clear security risk as the password 'pwd=' is visible in the packet capture.
+
+MITRE ATT&CK T1190 - Exploit Public-Facing Application
+Adversaries may attempt to exploit a weakness in an Internet-facing host or system to specifically target a vulnerability.
+Alert Note: "Attempt to access /media*" or "/wp-admin/plugin-install.php" may indicate an attempt to exploit vulnerabilities in WordPress plugins or themes.
+
+MITRE ATT&CK T1595.002 - Active Scanning: Vulnerability Scanning
+Adversaries may scan victims for vulnerabilities that can be used during targeting.
+Alert Note: "ET SCAN Possible Nmap User-Agent Observed" indicates the use of the Nmap scanning tool. The User-Agent "Mozilla/5.0 (compatible; Nmap Scripting Engine...)" is a strong indicator of scanning activity.
