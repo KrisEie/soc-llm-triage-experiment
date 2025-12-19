@@ -305,7 +305,6 @@ def main():
     out_path = args.out
     with open(out_path, "w", encoding="utf-8") as f:
         for r in rows:
-            # fjern _id i output hvis du ikke vil ha den med i fila
             r_out = dict(r)
             r_out.pop("_id", None)
             f.write(json.dumps(r_out, ensure_ascii=False) + "\n")

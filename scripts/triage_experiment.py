@@ -170,12 +170,7 @@ def run_llama(prompt):
             pad_token_id=llama_tokenizer.eos_token_id
         )
     
-    # Slice off prompt tokens to get only new tokens
-    # Or just decode everything and split. Llama 3 instruct format usually puts explanation after header.
-    # But generate returns input+output by default usually unless configured otherwise?
-    # Actually Model.generate returns full sequence.
-    # Let's simple decode and split by header if needed, or substring.
-    # Better: usage `outputs[0][inputs.input_ids.shape[1]:]`
+
     resp_tokens = outputs[0][inputs.input_ids.shape[1]:]
     resp_text = llama_tokenizer.decode(resp_tokens, skip_special_tokens=True)
     
@@ -247,7 +242,7 @@ def main():
         comparison_file.write(json.dumps(comp_rec) + "\n")
         comparison_file.flush()
         
-        time.sleep(1) # Polite delay
+        time.sleep(1)
 
     # Close files
     for f in files.values(): f.close()

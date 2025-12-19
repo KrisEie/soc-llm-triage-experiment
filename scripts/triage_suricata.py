@@ -94,20 +94,7 @@ def analyze_alert(model, alert):
          # Some structures might have it nested
          alert['payload_decoded'] = decode_payload(alert['suricata']['payload_base64'])
     
-    # Also handle the payload_base64 directly in the root or inner structures if user mentioned it specifically
-    # based on the example in the prompt, it seems it handles the provided alert structure.
-    # The user provided file has 'payload_base64' at the root level of the structure provided in the text description? 
-    # Let's check the previous `view_file` output.
-    # Ah, in the file: "payload_base64": "..." is inside the root object? 
-    # Wait, looking at file content:
-    # {"timestamp": ..., "rule": ..., "suricata": { ..., "payload_base64": "...", ...}}
-    # Actually, in the `view_file` output for line 1, `payload_base64` is inside the `suricata` object? No, looking closely at line 1:
-    # It seems `payload_base64` is a top-level key or inside `suricata`?
-    # Line 2: ... "suricata": { ... "http": { ... }, "payload_base64": "..." ... }
-    # So `payload_base64` IS inside the `suricata` object in the example lines shown? 
-    # Wait, in line 2 output: `"suricata": {"alert": ..., "http": ..., "payload_base64": "..."}`. Yes.
-    # But let's write code that finds it wherever it is or just decodes relevant fields.
-    
+
     # Safer approach: Decode known base64 fields in place for the LLM
     alert_copy = json.loads(json.dumps(alert)) # Deep copy
     

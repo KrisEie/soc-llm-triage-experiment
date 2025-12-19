@@ -2,7 +2,7 @@
 
 This repository contains the implementation and results for a proof-of-concept (PoC) experiment evaluating Large Language Models (LLMs) for Security Operations Center (SOC) alert triage.
 
-## 📋 Project Overview
+## Project Overview
 
 This experiment evaluates four LLM configurations on Suricata IDS alerts:
 - **Gemini 2.5 Flash** (cloud)
@@ -15,7 +15,7 @@ The goal was to test whether LLMs can:
 2. Provide actionable, structured triage recommendations
 3. Ground structured fields (CVE/MITRE) in alert evidence
 
-## 🔬 Data Collection
+## Data Collection
 
 **Data Source**: UiA SOC Lab (Malcolm-based network monitoring environment)
 
@@ -28,9 +28,9 @@ The goal was to test whether LLMs can:
 - Alerts 1-2: Benign (false-positive XSS signatures triggered by WordPress scripts)
 - Alerts 3-6: Suspicious (cleartext WordPress login, credential exposure, plugin upload access, Nmap scan)
 
-⚠️ **Access Requirement**: To replicate data extraction, you must be connected to the **UiA VPN** and have valid Malcolm credentials.
+ **Access Requirement**: To replicate data extraction, you must be connected to the **UiA VPN** and have valid Malcolm credentials.
 
-## 📁 Repository Structure
+##  Repository Structure
 
 ```
 soc-llm-triage-experiment/
@@ -50,7 +50,7 @@ soc-llm-triage-experiment/
     └── suricata_triage_llama_rag.jsonl
 ```
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -84,9 +84,8 @@ MALCOLM_USER=your_malcolm_username
 MALCOLM_PASS=your_malcolm_password
 ```
 
-⚠️ **Security Note**: Never commit your `.env` file to version control!
 
-## 🔧 Usage
+##  Usage
 
 ### 1. Data Extraction (Optional - Data Already Included)
 
@@ -122,7 +121,7 @@ cd scripts
 python triage_suricata.py
 ```
 
-## 📊 Key Findings
+## Key Findings
 
 ### Decision Correctness
 - **Gemini models**: 100% correct (6/6 alerts)
@@ -138,29 +137,26 @@ python triage_suricata.py
 1. **Context Pollution** (RAG retrieval error): Irrelevant context injection
 2. **Parametric Hallucination** (model error): Inventing non-existent CVEs
 
-## 📖 Citation
+##  Citation
 
 This work is part of a bachelor's thesis at the University of Agder (UiA), Norway.
 
 **Thesis Reference**:
-> **Title**: [Thesis Title]  
-> **Author**: [Your Name]  
+> **Title**: [LLM-Assisted Alert Triage in SOC]  
+> **Author**: [Kristian Eieland]  
 > **Institution**: University of Agder (UiA)  
 > **Year**: 2025  
 
-## 🔐 Security & Ethics
+##  Security & Ethics
 
 - All IP addresses in the dataset are internal lab addresses
 - No production SOC data or real customer information is included
 - The experiment was conducted in a controlled lab environment
 
-## 📝 License
 
-[Specify license, e.g., MIT, Apache 2.0, or Academic Use Only]
+##  Acknowledgments
 
-## 🤝 Acknowledgments
-
-- UiA SOC Lab team for lab access and ground-truth validation
+- UiA SOC Lab team for lab access 
 - Malcolm open-source project for the network monitoring platform
 - Google Gemini API and Meta LLaMA for model access
 
